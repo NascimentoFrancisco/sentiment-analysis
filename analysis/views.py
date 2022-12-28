@@ -12,7 +12,7 @@ class HomeView(View):
 class SearchSentimentAnalysis(View):
 
 
-    def post(self, request,  **kwargs):
+    def post(self, request, **kwargs):
         
         response = dict()
 
@@ -38,7 +38,7 @@ class SearchSentimentAnalysis(View):
 
                     return render(request, 'home.html',response)
 
-                text = models.get_vectorizer().transform([request.POST['text']])
+                text = models.vectorizer_transform([request.POST['text']])
                 result = model.predict(text)
 
                 if result[0] == 0:
